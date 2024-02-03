@@ -1,0 +1,42 @@
+dataset:
+  annotations: C:\Users\mikhail.klyazhev\Desktop\study\PycharmProjects\datasets\HaGRID_ResNet_classification_tiny\annotations\train
+  dataset: C:\Users\mikhail.klyazhev\Desktop\study\PycharmProjects\datasets\HaGRID_ResNet_classification_tiny\images\train
+  targets:
+    - like
+    - dislike
+    - ok
+    - one
+    - two_up
+    - three
+    - fist
+    - palm
+    - stop
+    - stop_inverted
+    - no_gesture
+  image_size: [224, 224]
+  subset: -1
+random_state: 42
+device: 'cpu'
+experiment_name: ResNet18
+model:
+  name: 'ResNet18'
+  pretrained: True
+  freezed: False
+  start_epoch: 0
+  checkpoint: #./weights/ResNet18.pth
+  full_frame: False
+optimizer:
+  lr: 0.005
+  momentum: 0.9
+  weight_decay: 0.0005
+scheduler:
+  start_factor: 0.001
+train_params:
+  epochs: 10
+  num_workers: 8
+  train_batch_size: 64
+  test_batch_size: 64
+  prefetch_factor: 16
+metric_params:
+  metrics: ['accuracy', 'f1_score', 'precision', 'recall']
+  average: 'weighted'
